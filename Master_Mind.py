@@ -1,4 +1,18 @@
 from random import *
+import turtle
+
+ 
+  
+turtle.bgcolor("lightblue")
+turtle.color("green","lightgreen")
+turtle.begin_fill()
+turtle.circle(50)
+turtle.end_fill()
+
+turtle.color("blue","red")
+turtle.begin_fill()
+turtle.circle(50)
+turtle.end_fill()
 
 colors = ["Rojo","Amarillo","Verde","Azul","Anaranjado","Morado" ]
 lista = choices(colors,k=4)
@@ -8,6 +22,8 @@ print(" Colores aleatorios")
 print("╚══════════  .*. ═╝")
 print(lista)
 print()
+
+
 
 ## Menu del programa:
 running = True
@@ -24,7 +40,7 @@ while running:
     print()
     
     if select_option == '1':
-        print("Iniciar Juego en desarrollo! Proximamente!")
+        nombre = input("Introduzca un nombre: ")
         print()
 
     elif select_option == '2':
