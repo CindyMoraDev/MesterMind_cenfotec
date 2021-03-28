@@ -1,3 +1,5 @@
+from turtle import *
+
 #Setup Turtle  
 setup(550,400)
 tl = Turtle()
