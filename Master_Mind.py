@@ -1,27 +1,38 @@
 from random import *
-import turtle
+from turtle import *
 
- 
-  
-turtle.bgcolor("lightblue")
-turtle.color("green","lightgreen")
-turtle.begin_fill()
-turtle.circle(50)
-turtle.end_fill()
-
-turtle.color("blue","red")
-turtle.begin_fill()
-turtle.circle(50)
-turtle.end_fill()
-
-colors = ["Rojo","Amarillo","Verde","Azul","Anaranjado","Morado" ]
+#Generacion de colores random
+colors = ["Red","Yellow","Green","Blue","Orange","Purple" ]
 lista = choices(colors,k=4)
 print()
 print("╔═  .*. ══════════╗")
 print(" Colores aleatorios")
 print("╚══════════  .*. ═╝")
-print(lista)
+print("lista",lista)
 print()
+
+
+
+#BORRAR prueba de comparacion de colores para no digitar cada vez
+codebreaker = ["Green","Orange","Red","Blue"]
+print("Codebreaker",codebreaker)
+
+#Comparacion de random con cada linea de code breaker
+for x in range(4):
+    for y in range(4):
+        print ("lista",lista[x],"codebreaker",codebreaker[y])
+        if lista[x] == codebreaker[y]:
+            print("Color en fila",lista[x],codebreaker[y])
+        
+    
+#Comparacion de colores lineas en misma posicion
+for n in range(len(codebreaker)):
+    if lista[n] == codebreaker[n]:
+        print(codebreaker[n])
+        print("Coincide")
+    else:
+        print(codebreaker[n])
+        print("No Coincide")
 
 
 
@@ -40,7 +51,7 @@ while running:
     print()
     
     if select_option == '1':
-        nombre = input("Introduzca un nombre: ")
+        player = input("Introduzca un nombre: ")
         print()
 
     elif select_option == '2':
@@ -49,8 +60,8 @@ while running:
         print(" Instrucciones del Juego")
         print("╚═══════════════  .*. ═╝")
         print("Mastermind consiste en un juego de mesa de dos jugadores en el cual un jugador")
-        print("crea un codigo de 4 colores (codemaker) y el otro jugador intenta adivinar")
-        print("este codigo (codebreaker) basado en pistas que el codemaker debe darle al code-")
+        print("crea un codigo de 4 colores (codemaker) y el otro jugador intenta adivinar")
+        print("este codigo (codebreaker) basado en pistas que el codemaker debe darle al code-")
         print("breaker.")
         print()
 
