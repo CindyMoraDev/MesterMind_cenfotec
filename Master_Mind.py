@@ -37,16 +37,21 @@ while i < (len(lista)):
     tl.up()
 ''' 
 
+#PENDIENTE Funcion agregar, me da problema que me crea una lista dentro de otra lista
+codebreaker = []
 #Si declaraba lista vacia a la hora de comparar, error decia que guess estaba fuera de rango
-guess = ["O","O","O","O"]
-
-
-#BORRAR prueba de comparacion de colores para no digitar cada vez
-codebreaker = ["Green","Orange","Red","Blue"]
-print("Codebreaker",codebreaker)
+guess = ["0","0","0","0"]
 
 
 
+
+#Recibir intento de usuario
+def ingresar_intento(color1,color2,color3,color4,intento_guess):
+    nuevo_intento = [color1,color2,color3,color4]
+    intento_guess.append(nuevo_intento)
+    return intento_guess
+
+#PENDIENTE colocar evaluacion despues de ingreso de datos, ahora se reproduce antes del ingreso y no evalua
 #Comparacion de colores lineas en misma posicion 
 for n in range(len(codebreaker)):
     if lista[n] == codebreaker[n]:
@@ -66,7 +71,7 @@ for x in range(len(codebreaker)):
             break
 print("Lista",guess)
 
-    
+
 
 ## Menu del programa:
 running = True
@@ -83,8 +88,15 @@ while running:
     print()
     
     if select_option == '1':
-        player = input("Introduzca un nombre: ")
-        
+        player = input("Introduzca el nombre: ")
+        color1 = input("Ingrese color #1")
+        color2 = input("Ingrese color #2")
+        color3 = input("Ingrese color #3")
+        color4 = input("Ingrese color #4")
+
+#PENDIENTE probar si eliminando nuevo_ingreso no se registra doble lista 
+        nuevo_ingreso = ingresar_intento(color1,color2,color3,color4,codebreaker)
+        print(codebreaker)    
         print()
 
     elif select_option == '2':
