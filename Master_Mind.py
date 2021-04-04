@@ -7,10 +7,11 @@ from random import *
 colors = ["Red","Yellow","Green","Blue","Orange","Purple" ]
 lista = choices(colors,k=4)
 print()
-print("╔═  .*. ══════════╗")
-print(" Colores aleatorios")
-print("╚══════════  .*. ═╝")
-print("lista",lista)
+print("╔═  .*. ══════════════════════╗")
+print(" Colores aleatorios Generados")
+print("╚══════════════════════  .*. ═╝")
+#PENDIENTE borrar antes de enviar entregable
+print("Aleatorio",lista)
 print()
 
 '''
@@ -37,12 +38,9 @@ while i < (len(lista)):
     tl.up()
 ''' 
 
-#PENDIENTE Funcion agregar, me da problema que me crea una lista dentro de otra lista
 codebreaker = []
 #Si declaraba lista vacia a la hora de comparar, error decia que guess estaba fuera de rango
 guess = ["0","0","0","0"]
-
-
 
 
 #Recibir intento de usuario
@@ -52,24 +50,25 @@ def ingresar_intento(color1,color2,color3,color4,intento_guess):
     return intento_guess
 
 #PENDIENTE colocar evaluacion despues de ingreso de datos, ahora se reproduce antes del ingreso y no evalua
-#Comparacion de colores lineas en misma posicion 
-for n in range(len(codebreaker)):
-    if lista[n] == codebreaker[n]:
-        print("Coincide")
-        guess[n] = "X"
-        print(guess[n])
-print("Lista",guess)
+#Comparacion de colores lineas en misma posicion
+def comparar(lista,codebreaker):
+    for n in range(len(codebreaker)):
+        if lista[n] == codebreaker[n]:
+            print("Coincide")
+            guess[n] = "X"
+            print(guess[n])
+    print("Lista Pistas 1",guess)
 
-#Comparacion de lista random con cada linea de code breaker
-for x in range(len(codebreaker)):
-    for y in range(len(codebreaker)):
-        if guess[x] != "X":
-            if codebreaker[x] == lista[y]:
-                guess[x] = "-"
-                print(guess[x])
-        else:
-            break
-print("Lista",guess)
+    #Comparacion de lista random con cada linea de codebreaker
+    for x in range(len(codebreaker)):
+        for y in range(len(codebreaker)):
+            if guess[x] != "X":
+                if codebreaker[x] == lista[y]:
+                    guess[x] = "-"
+                    print(guess[x])
+            else:
+                break
+    print("Lista Pistas 2",guess)
 
 
 
@@ -89,13 +88,16 @@ while running:
     
     if select_option == '1':
         player = input("Introduzca el nombre: ")
-        color1 = input("Ingrese color #1")
-        color2 = input("Ingrese color #2")
-        color3 = input("Ingrese color #3")
-        color4 = input("Ingrese color #4")
+#PENDIENTE colores abreviados R Y G B O P 
+        color1 = input("Ingrese color #1 ")
+        color2 = input("Ingrese color #2 ")
+        color3 = input("Ingrese color #3 ")
+        color4 = input("Ingrese color #4 ")
 
-#PENDIENTE probar si eliminando nuevo_ingreso no se registra doble lista 
+#Se registraba lista con lista interna [[]], tuve que sustituir variable original por la misma solo con el indice cero, probé varias formas de ingresar datos a lista vacia
         nuevo_ingreso = ingresar_intento(color1,color2,color3,color4,codebreaker)
+        codebreaker = codebreaker[0]
+        comparar
         print(codebreaker)    
         print()
 
