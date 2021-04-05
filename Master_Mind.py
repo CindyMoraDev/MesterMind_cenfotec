@@ -4,7 +4,7 @@ from random import *
 
 
 #Generacion de colores random
-colors = ["Red","Yellow","Green","Blue","Orange","Purple" ]
+colors = ["r","y","g","b","o","p"]
 lista = choices(colors,k=4)
 print()
 print("╔═  .*. ══════════════════════╗")
@@ -15,7 +15,7 @@ print("Aleatorio",lista)
 print()
 
 '''
-#Setup Turtle  
+#Setup Turtle  Python 
 setup(550,400)
 tl = Turtle()
 tl.up()
@@ -49,9 +49,10 @@ def ingresar_intento(color1,color2,color3,color4,intento_guess):
     intento_guess.append(nuevo_intento)
     return intento_guess
 
-#PENDIENTE colocar evaluacion despues de ingreso de datos, ahora se reproduce antes del ingreso y no evalua
 #Comparacion de colores lineas en misma posicion
 def comparar(lista,codebreaker):
+    #reiniciar variable en cada intento, ya que guardaba info de siguiente funcion
+    guess = ["0","0","0","0"]
     for n in range(len(codebreaker)):
         if lista[n] == codebreaker[n]:
             print("Coincide")
@@ -69,6 +70,7 @@ def comparar(lista,codebreaker):
             else:
                 break
     print("Lista Pistas 2",guess)
+    return guess
 
 
 
@@ -88,17 +90,28 @@ while running:
     
     if select_option == '1':
         player = input("Introduzca el nombre: ")
-#PENDIENTE colores abreviados R Y G B O P 
-        color1 = input("Ingrese color #1 ")
-        color2 = input("Ingrese color #2 ")
-        color3 = input("Ingrese color #3 ")
-        color4 = input("Ingrese color #4 ")
+        evaluation = True
+        count = 0
+        #Ciclo de intentos, evaluando 
+        while evaluation and count < 12:
+            print( "Opciones de color Red = r Yellow = y Green = g Blue = b Orange = o Purple = p") 
+            color1 = input("Ingrese color #1 ")
+            color2 = input("Ingrese color #2 ")
+            color3 = input("Ingrese color #3 ")
+            color4 = input("Ingrese color #4 ")
 
-#Se registraba lista con lista interna [[]], tuve que sustituir variable original por la misma solo con el indice cero, probé varias formas de ingresar datos a lista vacia
-        nuevo_ingreso = ingresar_intento(color1,color2,color3,color4,codebreaker)
-        codebreaker = codebreaker[0]
-        comparar
-        print(codebreaker)    
+            #Se registraba lista con lista interna [[]], tuve que sustituir variable original por la misma solo con el indice cero,
+            #probé varias formas de ingresar datos a lista vacia
+            nuevo_ingreso = ingresar_intento(color1,color2,color3,color4,codebreaker)
+            codebreaker = codebreaker[0]
+            comparar(lista,codebreaker)
+            print(codebreaker)
+            count += 1
+            if guess == ["X","X","X","X"]:
+                print("Codigo acertado")                
+                evaluation = False
+            print("")
+        print("Intentos agotados")
         print()
 
     elif select_option == '2':
